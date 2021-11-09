@@ -4,9 +4,6 @@ public class Surgeon extends Doctor {
     private int expertLevel = 100;
     private int numberOfOperations;
 
-    public Surgeon() {
-    }
-
     public Surgeon(String name,
                    String surname,
                    String education,

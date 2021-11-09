@@ -3,9 +3,6 @@ package ru.job4j.inheritance;
 public class Dentist extends Doctor {
     private boolean isImplantologist;
 
-    public Dentist() {
-    }
-
     public Dentist(String name,
                    String surname,
                    String education,
