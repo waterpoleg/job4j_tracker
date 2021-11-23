@@ -24,8 +24,8 @@ public class DiapasonTest {
 
     @Test
     public void whenExpoFuncThenExpoResult() {
-        List<Double> result = Diapason.diapason(2, 5, x -> Math.pow(x, x));
-        List<Double> expected = Arrays.asList(4D, 27D, 256D);
+        List<Double> result = Diapason.diapason(2, 5, x -> Math.pow(2, x));
+        List<Double> expected = Arrays.asList(4D, 8D, 16D);
         assertThat(result, is(expected));
     }
 }
