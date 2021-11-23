@@ -17,7 +17,7 @@ public class DiapasonTest {
 
     @Test
     public void whenQuadroFuncThenQuadroResult() {
-        List<Double> result = Diapason.diapason(5, 8, x -> x * x);
+        List<Double> result = Diapason.diapason(5, 8, x -> Math.pow(x, 2));
         List<Double> expected = Arrays.asList(25D, 36D, 49D);
         assertThat(result, is(expected));
     }
