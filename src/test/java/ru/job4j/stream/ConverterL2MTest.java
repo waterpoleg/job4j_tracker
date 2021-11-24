@@ -16,8 +16,8 @@ public class ConverterL2MTest extends TestCase {
                 new Student(1, "Student1"),
                 new Student(2, "Student2"),
                 new Student(3, "Student3"),
-                new Student(2, "Student2"),
-                new Student(2, "Student2")
+                new Student(4, "Student2"),
+                new Student(5, "Student2")
         );
         ConverterL2M l2m = new ConverterL2M();
         Map<String, Student> rsl = l2m.convert(students);
