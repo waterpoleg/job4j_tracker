@@ -27,7 +27,7 @@ public class JobTest {
                 new Job("Fix bug", 1),
                 new Job("Last task", 2)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Fix bug", 1),
                 new Job("Impl task", 0),
                 new Job("Last task", 2)
@@ -43,7 +43,7 @@ public class JobTest {
                 new Job("Fix bug", 1),
                 new Job("Last task", 2)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Last task", 2),
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
@@ -59,7 +59,7 @@ public class JobTest {
                 new Job("Fix bug", 1),
                 new Job("Last task", 2)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1),
                 new Job("Last task", 2)
@@ -75,7 +75,7 @@ public class JobTest {
                 new Job("Fix bug", 1),
                 new Job("Last task", 2)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Last task", 2),
                 new Job("Fix bug", 1),
                 new Job("Impl task", 0)
@@ -91,7 +91,7 @@ public class JobTest {
                 new Job("Last task", 0),
                 new Job("Last task", 2)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Last task", 0),
                 new Job("Last task", 1),
                 new Job("Last task", 2)
@@ -109,7 +109,7 @@ public class JobTest {
                 new Job("Fix bug", 0),
                 new Job("Last task", 0)
         );
-        List<Job> exp = Arrays.asList(
+        List<Job> exp = List.of(
                 new Job("Fix bug", 0),
                 new Job("Impl task", 0),
                 new Job("Last task", 0)
