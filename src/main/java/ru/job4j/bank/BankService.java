@@ -58,8 +58,7 @@ public class BankService {
         Optional<User> user = findByPassport(passport);
         Optional<Account> ac = Optional.empty();
         if (user.isPresent()) {
-            List<Account> accounts = users.get(user.get());
-            ac = accounts.stream()
+            ac = users.get(user.get()).stream()
                     .filter(a -> a.getRequisite().equals(requisite))
                     .findFirst();
         }
