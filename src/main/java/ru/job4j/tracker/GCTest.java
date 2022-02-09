@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class GC_test {
+public class GCTest {
     public static void main(String[] args) {
         double start;
         double finish;
@@ -10,6 +10,6 @@ public class GC_test {
             memTracker.add(new Item("item #" + i));
         }
         finish = System.currentTimeMillis();
-        System.out.printf("%nApp running time: %f%n%n", (finish - start ) / 1000);
+        System.out.printf("%nApp running time: %f%n%n", (finish - start) / 1000);
     }
 }
