@@ -54,22 +54,18 @@ public class SqlTrackerTest {
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
+        Item item = tracker.add(new Item("item"));
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
     @Test
     public void whenFindAllItems() {
         Store tracker = new SqlTracker(connection);
-        List<Item> items = List.of(
-                new Item("item1"),
-                new Item("item2")
-        );
-        items.forEach(tracker::add);
-        List<Item> savedItems = tracker.findAll();
-        assertThat(savedItems, is(items));
-        assertThat(savedItems.get(0), is(items.get(0)));
+        Item item1 = tracker.add(new Item("item1"));
+        Item item2 = tracker.add(new Item("item2"));
+        Item item3 = tracker.add(new Item("item3"));
+        Item item4 = tracker.add(new Item("item4"));
+        assertThat(tracker.findAll(), is(List.of(item1, item2, item3, item4)));
     }
 
     @Test
@@ -83,26 +79,26 @@ public class SqlTrackerTest {
     @Test
     public void whenFindById() {
         Store tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
+        Item item = tracker.add(new Item("item"));
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
     @Test
     public void whenFindByName() {
         Store tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
-        assertThat(tracker.findByName(item.getName()), is(List.of(item)));
+        Item item = tracker.add(new Item("item"));
+        Item item2 = tracker.add(new Item("item2"));
+        Item item3 = tracker.add(new Item("item"));
+        assertThat(tracker.findByName(item.getName()), is(List.of(item, item3)));
     }
 
     @Test
     public void whenReplaceItem() {
         Store tracker = new SqlTracker(connection);
         Item item = new Item("item");
-        tracker.add(item);
-        item.setName("item2");
-        tracker.replace(item.getId(), item);
+        Item replacedItem = tracker.add(item);
+        item.setName("replaced item");
+        tracker.replace(replacedItem.getId(), item);
         assertThat(tracker.findById(item.getId()), is(item));
     }
 }
