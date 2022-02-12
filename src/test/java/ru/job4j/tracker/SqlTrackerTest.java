@@ -95,10 +95,9 @@ public class SqlTrackerTest {
     @Test
     public void whenReplaceItem() {
         Store tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        Item replacedItem = tracker.add(item);
-        item.setName("replaced item");
-        tracker.replace(replacedItem.getId(), item);
-        assertThat(tracker.findById(item.getId()), is(item));
+        Item item1 = tracker.add(new Item("item1"));
+        Item item2 = tracker.add(new Item("item2"));
+        tracker.replace(item1.getId(), item2);
+        assertThat(tracker.findById(item1.getId()).getName(), is(item2.getName()));
     }
 }
