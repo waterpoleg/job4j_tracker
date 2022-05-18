@@ -7,6 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import javax.persistence.Query;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
@@ -47,7 +49,7 @@ public class HbmTracker implements Store, AutoCloseable {
     public boolean delete(int id) {
         Session session = sf.openSession();
         session.beginTransaction();
-        Item item = new Item(null);
+        Item item = new Item(null, "---", new Timestamp(1459510232000L));
         item.setId(id);
         session.delete(item);
         session.getTransaction().commit();
