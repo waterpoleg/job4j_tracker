@@ -6,6 +6,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class HibernateRun {
@@ -14,7 +16,11 @@ public class HibernateRun {
                 .configure().build();
         try {
             SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Item item = create(new Item("Learn Hibernate"), sf);
+            Item item = create(
+                    new Item("Learn Hibernate",
+                            "Default description",
+                            new Timestamp(1459510232000L)),
+                    sf);
             System.out.println(item);
             item.setName("Learn Hibernate 5.");
             update(item, sf);
@@ -22,6 +28,16 @@ public class HibernateRun {
             Item rsl = findById(item.getId(), sf);
             System.out.println(rsl);
             delete(rsl.getId(), sf);
+            Item item2 = create(
+                    new Item("Learn Hibernate N",
+                            "description N",
+                            new Timestamp(1459510232000L)),
+                    sf);
+            Item item3 = create(
+                    new Item("Learn Hibernate N+1",
+                            "description N+1",
+                            new Timestamp(1459510232000L)),
+                    sf);
             List<Item> list = findAll(sf);
             for (Item it : list) {
                 System.out.println(it);
@@ -53,7 +69,7 @@ public class HibernateRun {
     public static void delete(Integer id, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
-        Item item = new Item(null);
+        Item item = new Item(null, "---", new Timestamp(1459510232000L));
         item.setId(id);
         session.delete(item);
         session.getTransaction().commit();
